@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: aceest-canary
+  namespace: aceest
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/actions.forward-canary: >
+      {"Type":"forward","ForwardConfig":{"TargetGroups":[
+        {"ServiceName":"aceest-svc","ServicePort":"80","Weight":90},
+        {"ServiceName":"aceest-svc-canary","ServicePort":"80","Weight":10}
+      ]}}
+spec:
+  rules:
+    - http:
+        paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: forward-canary
+              port:
+                number: 80

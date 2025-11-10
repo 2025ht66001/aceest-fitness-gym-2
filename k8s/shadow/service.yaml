@@ -1,0 +1,14 @@
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: aceest-svc-shadow
+  namespace: aceest
+spec:
+  selector:
+    app: aceest-api
+    version: shadow
+  ports:
+    - port: 80
+      targetPort: 8080
+  type: ClusterIP

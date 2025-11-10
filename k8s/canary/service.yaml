@@ -1,0 +1,14 @@
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: aceest-svc-canary
+  namespace: aceest
+spec:
+  selector:
+    app: aceest-api
+    version: canary
+  ports:
+    - port: 80
+      targetPort: 8080
+  type: ClusterIP

@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: aceest-ingress-ab
+  namespace: aceest
+  annotations:
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      set $is_b 0;
+      if ($http_x_variant = "B") { set $is_b 1; }
+      if ($is_b) { proxy_pass http://aceest-svc-variant-b.aceest.svc.cluster.local$request_uri; break; }
+spec:
+  rules:
+    - host: aceest.local
+      http:
+        paths:
+          - path: /(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: aceest-svc
+                port:
+                  number: 80
