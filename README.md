@@ -18,6 +18,10 @@ docker build -t  2025ht66001/aceest-fitness:latest .
 docker run -p 8080:8080  2025ht66001/aceest-fitness:latest
 ```
 
+## Docker repo screenshot
+<img width="1908" height="1158" alt="image" src="https://github.com/user-attachments/assets/40fdb914-52fd-4ae9-ba50-b8110e8b971f" />
+
+
 ## Tests
 
 ```bash
