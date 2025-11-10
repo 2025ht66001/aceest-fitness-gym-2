@@ -14,8 +14,8 @@ python app.py
 ## Docker
 
 ```bash
-docker build -t your-dockerhub-username/aceest-fitness:latest .
-docker run -p 8080:8080 your-dockerhub-username/aceest-fitness:latest
+docker build -t  2025ht66001/aceest-fitness:latest .
+docker run -p 8080:8080  2025ht66001/aceest-fitness:latest
 ```
 
 ## Tests
