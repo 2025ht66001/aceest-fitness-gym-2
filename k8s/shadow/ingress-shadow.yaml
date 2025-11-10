@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: aceest-ingress-shadow
+  namespace: aceest
+  annotations:
+    nginx.ingress.kubernetes.io/mirror-target: "aceest-svc-shadow"
+spec:
+  rules:
+    - host: aceest.local
+      http:
+        paths:
+          - path: /(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: aceest-svc
+                port:
+                  number: 80
